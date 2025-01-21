@@ -62,7 +62,7 @@ export default function LoginView() {
         />
       </form>
 
-      <nav className="mt-10">
+      <nav className="mt-10"> 
         <Link
           className="text-center text-white text-lg block"
           to="/auth/register">
