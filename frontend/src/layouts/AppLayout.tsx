@@ -1,8 +1,19 @@
 import { Link, Outlet } from "react-router-dom";
 import { Toaster } from "sonner";
+import { useQuery } from "@tanstack/react-query";
 import NavigationTabs from "../components/NavigationTabs";
+import { getUser } from "../api/DevTreeAPI";
 
 export default function AppLayout() {
+
+    const { data } = useQuery({
+        queryFn: getUser,
+        queryKey: ['user'],
+        retry: 1,
+        refetchOnWindowFocus: false,
+    })
+
+    console.log(data);
 
 
     return (
@@ -15,7 +26,7 @@ export default function AppLayout() {
                     <div className="md:w-1/3 md:flex md:justify-end">
                         <button
                             className=" bg-lime-500 p-2 text-slate-800 uppercase font-black text-xs rounded-lg cursor-pointer"
-                            onClick={() => {}}
+                            onClick={() => { }}
                         >
                             Cerrar Sesión
                         </button>
@@ -25,9 +36,9 @@ export default function AppLayout() {
             <div className="bg-gray-100  min-h-screen py-10">
                 <main className="mx-auto max-w-5xl p-10 md:p-0">
                     <NavigationTabs />
-                    
+
                     <div className="flex justify-end">
-                        <Link 
+                        <Link
                             className="font-bold text-right text-slate-800 text-2xl"
                             to={''}
                             target="_blank"
